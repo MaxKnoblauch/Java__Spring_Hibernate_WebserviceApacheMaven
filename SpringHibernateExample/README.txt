@@ -19,4 +19,4 @@ Starten Sie die Klasse SpringhibernateApplication, dann sollten
 die in den Kommentaren der Klasse PersonController angegebenen 
 URLs funktionieren.
 
-Rolf Assfalg 11/2022
+Rolf Assfalg 03/2023
