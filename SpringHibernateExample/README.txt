@@ -9,7 +9,10 @@ explizit in SQL zu programmieren.
 Es handelt sich um ein Maven-Projekt: 
 Unter src/main/resources/application.properties müssen die 
 Zugangsdaten zu einer Datenbank  (z.B. MySQL / MariaDB) angegeben 
-werden. Die Datei pom.xml führt alle notwendigen Libraries auf, 
+werden. Im Stammverzeichnis finden Sie eine .sql-Datei, mit der
+die Tabelle angelegt wird und Daten bereit gestellt werden.
+
+Die Datei pom.xml führt alle notwendigen Libraries auf, 
 die automatisch installiert werden.
 
 Starten Sie die Klasse SpringhibernateApplication, dann sollten 
