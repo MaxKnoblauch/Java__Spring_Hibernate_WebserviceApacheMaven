@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("de.dhbwheidenheim.informatik.springhibernate")
-public class SpringhibernateApplication {
+public class SpringhibernateApplication { 
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringhibernateApplication.class, args);

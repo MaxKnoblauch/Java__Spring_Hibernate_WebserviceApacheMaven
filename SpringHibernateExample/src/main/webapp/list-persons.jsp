@@ -27,6 +27,7 @@
         </table>
         Es sind ${anzahl} Personen gespeichert.
         <a href="add-person">Neue Person</a>
+        <a href="/">Home</a>
         
         <p>${errorMessage}</p>
     </body>

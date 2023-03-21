@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hallo Welt, dies ist ein .jsp-File unter src/main/webapp/WEB-INF/jsp
+Dies ist ein .jsp-File unter src/main/webapp/WEB-INF/jsp
+<ul>
+
+<li><a href="/demo/all">Klassischer JSON-Web-Service</a></li>
+<li><a href="/demo/list-persons">ruft wegen returnwert ein JSP-File auf und listet alle Personen</a></li>
+<li><a href="/demo/add-person">Bei GET: JSP-Formular; Bei POST: Neue Person hinzufügen</a></li>
+
+</ul>
 </body>
 </html>
