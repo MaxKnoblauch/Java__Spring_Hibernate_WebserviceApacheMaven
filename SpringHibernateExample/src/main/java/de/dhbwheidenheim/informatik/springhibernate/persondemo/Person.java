@@ -1,11 +1,11 @@
-package de.dhbwheidenheim.informatik.springhibernate;
+package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Person {
@@ -14,11 +14,38 @@ public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 	private String name;
-	private int age; // Das darf nicht "alter" hei�en - Sonst Hibernate-SQL-Fehler - das ist sehr
-						// subtil!!!
+	private String vorname;
+	private int age; // Das darf nicht "alter" hei�en - Sonst Hibernate-SQL-Fehler 
+	// - das ist sehr subtil!!!
 
+	/* Das Folgende funktioniert zwar, hat aber den Nachteil, dass bei JSON-Ausgaben der Personen-Objekte eine Endlosschleife entsteht!
+	@ManyToOne
+	@JoinColumn(name="verheiratet_mit")
+	private Person verheiratetMit;
+	
+	
+	public void verheirateMit(Person partner) {
+		this.verheiratetMit = partner;
+		partner.verheiratetMit = this;
+	}
+
+	public Person getVerheiratetMit() {
+		return verheiratetMit;
+	}
+	
+    */
+	
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
+	
 	public int namenslaenge() {
 		return name.length();
 	}
@@ -29,11 +56,12 @@ public class Person {
 		return age >= 18;
 	}
 
-	public long getId() {
+	
+    public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -57,13 +85,15 @@ public class Person {
 		return (name + "(" + namenslaenge() + ") - Alter:" + age);
 	}
 
-	public Person(String name, int alter) {
+	public Person(String name, String vorname, int alter) {
 		this.name = name;
+		this.vorname = vorname;
 		this.age = alter;
 	}
 
-	public Person(String name, double alter) {
+	public Person(String name, String vorname, double alter) {
 		this.name = name;
+		this.vorname = vorname;
 		this.age = (int) alter;
 	}
 

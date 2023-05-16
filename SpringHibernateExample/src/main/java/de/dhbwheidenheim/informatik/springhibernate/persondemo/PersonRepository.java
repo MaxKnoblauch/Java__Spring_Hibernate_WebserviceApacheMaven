@@ -1,4 +1,4 @@
-package de.dhbwheidenheim.informatik.springhibernate;
+package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import org.springframework.data.repository.CrudRepository;
 
