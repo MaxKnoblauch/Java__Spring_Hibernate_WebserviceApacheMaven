@@ -96,7 +96,7 @@ public class PersonController {
 			// @ResponseBody means the returned String is the response, not a view name
 			// @RequestParam means it is a parameter from the GET or POST request
 			// So sieht eine klassische Web-Service-Schnittstelle aus...
-			// z.B.: http://localhost:8080/demo/makeFriends?idFrom=29&idTo=9
+			// z.B.: http://localhost:8080/demo/makeMariage?idFrom=33&idTo=36
 			try {
 				
 				service.makeMariage(idFrom, idTo, personRepository, heiratRepository);
