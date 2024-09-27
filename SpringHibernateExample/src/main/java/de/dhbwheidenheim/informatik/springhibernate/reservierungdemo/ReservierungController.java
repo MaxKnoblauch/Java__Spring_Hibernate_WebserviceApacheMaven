@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.dhbwheidenheim.informatik.springhibernate.persondemo.PersonRepository;
+import de.dhbwheidenheim.informatik.springhibernate.persondemo.Reservierung;
 import de.dhbwheidenheim.informatik.springhibernate.persondemo.Person;
 
 import java.util.Optional;

@@ -3,6 +3,8 @@ package de.dhbwheidenheim.informatik.springhibernate.reservierungdemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import de.dhbwheidenheim.informatik.springhibernate.persondemo.Reservierung;
+
 @Service
 public class ReservierungService {
 

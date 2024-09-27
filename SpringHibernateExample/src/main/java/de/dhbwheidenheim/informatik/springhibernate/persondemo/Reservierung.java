@@ -1,4 +1,4 @@
-package de.dhbwheidenheim.informatik.springhibernate.reservierungdemo;
+package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
