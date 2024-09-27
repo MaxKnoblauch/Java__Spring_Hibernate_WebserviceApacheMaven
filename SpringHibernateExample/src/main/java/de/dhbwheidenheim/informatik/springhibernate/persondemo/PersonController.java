@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import de.dhbwheidenheim.informatik.springhibernate.reservierungdemo.ReservierungRepository;
-
 import java.util.Optional;
 
 @Controller

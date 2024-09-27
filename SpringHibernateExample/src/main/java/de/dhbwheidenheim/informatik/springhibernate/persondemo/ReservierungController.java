@@ -1,14 +1,10 @@
-package de.dhbwheidenheim.informatik.springhibernate.reservierungdemo;
+package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import de.dhbwheidenheim.informatik.springhibernate.persondemo.PersonRepository;
-import de.dhbwheidenheim.informatik.springhibernate.persondemo.Reservierung;
-import de.dhbwheidenheim.informatik.springhibernate.persondemo.Person;
 
 import java.util.Optional;
 
@@ -37,6 +33,8 @@ public class ReservierungController {
             return "Fehler: " + e.getMessage();
         }
     }
+    
+  
 
     @GetMapping(path = "/reservierungen")
     public @ResponseBody Iterable<Reservierung> getAllReservierungen() {
