@@ -5,14 +5,7 @@
 </head>
 <body>
 <h1>Willkommen zur Reservierungsverwaltung</h1>
-<ul>
-    <li><a href="addPerson.jsp">Neue Person hinzufügen</a></li>
-    <li><a href="addObjekt.jsp">Neues Objekt hinzufügen</a></li>
-    <li><a href="addReservierung.jsp">Neue Reservierung hinzufügen</a></li>
-    <li><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></li>
-    <li><a href="${pageContext.request.contextPath}/objektdemo/allObjekte">Liste aller Objekte anzeigen</a></li>
-    <li><a href="${pageContext.request.contextPath}/reservierungdemo/allReservierungen">Liste aller Reservierungen anzeigen</a></li>
-</ul>
+
 
 <h2>Personenverwaltung</h2>
 <!-- Formular zur Erfassung einer neuen Person -->
@@ -27,7 +20,7 @@
 </form>
 
 <!-- Link zur Auflistung aller Personen -->
-<h3><a href="/personen">Liste aller Personen anzeigen</a></h3>
+<h3><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></h3>
 
 <h2>Objekte verwalten</h2>
 <!-- Formular zur Erfassung eines neuen Objekts -->
