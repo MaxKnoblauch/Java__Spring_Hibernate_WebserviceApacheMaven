@@ -61,10 +61,6 @@ public class ReservierungController {
         }
     }
 
-    // Rückgabe aller Reservierungen
-    @GetMapping(path = "/reservierungen")
-    public @ResponseBody Iterable<Reservierung> getAllReservierungen() {
-        return reservierungRepository.findAll();
-    }
+    
 }
 

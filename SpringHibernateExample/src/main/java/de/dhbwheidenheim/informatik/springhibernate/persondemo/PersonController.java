@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -21,17 +22,22 @@ public class PersonController {
     @Autowired
     private ReservierungRepository reservierungRepository;
 
-    // Neue Person hinzufügen
-    @GetMapping(path = "/addPerson")
-    public @ResponseBody String addPerson(@RequestParam String name, @RequestParam String vorname, @RequestParam int age) {
+    // Neue Person hinzufügen über ein Formular
+    @PostMapping(path = "/addPerson")
+    public String addPerson(@RequestParam String name, 
+                            @RequestParam String vorname, 
+                            @RequestParam int age, 
+                            RedirectAttributes redirectAttributes) {
         try {
             Person p = new Person(name, vorname, age);
             personService.addPerson(p);
-            return "Person erfolgreich hinzugefügt!";
+            redirectAttributes.addFlashAttribute("message", "Person erfolgreich hinzugefügt!");
         } catch (Exception e) {
-            return "Fehler: " + e.getMessage();
+            redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
         }
+        return "redirect:/"; // Leitet zur Startseite zurück
     }
+
 
     // Alle Personen anzeigen
     @GetMapping(path = "/allPersons")
@@ -71,11 +77,10 @@ public class PersonController {
     }
 
     // HTML-Seite mit einer Liste aller Personen und deren Anzahl anzeigen
-    @RequestMapping(value = "/listPersons", method = RequestMethod.GET)
+    @GetMapping(value = "/listPersons")
     public String listPersons(ModelMap model) {
         model.put("persons", personService.getAllPersons());
         model.put("anzahl", personService.countPersons());
-        return "list-persons";
+        return "list-persons"; // Rückgabe zur JSP-Seite
     }
 }
-
