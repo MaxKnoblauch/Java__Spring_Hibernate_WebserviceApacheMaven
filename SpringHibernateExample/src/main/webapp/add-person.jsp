@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>First Web Application</title>
+    <title>Neue Person hinzufügen</title>
 </head>
-
 <body>
-    <font color="red">${errorMessage}</font>
-    <form method="post">
-        Name : <input type="text" name="name" />
-        Alter : <input type="text" name="age" /> 
-        <input type="submit" />
+    <h2>Neue Person hinzufügen</h2>
+    <form action="${pageContext.request.contextPath}/persondemo/addPerson" method="GET">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="vorname">Vorname:</label>
+        <input type="text" id="vorname" name="vorname" required><br>
+        <label for="age">Alter:</label>
+        <input type="number" id="age" name="age" required><br>
+        <button type="submit">Person hinzufügen</button>
     </form>
+    <a href="index.jsp">Zurück zur Startseite</a>
 </body>
-
 </html>
