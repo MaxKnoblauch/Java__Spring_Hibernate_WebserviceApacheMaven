@@ -8,25 +8,28 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-        // Verweist auf die index.jsp
-        return "index";
+        // Verweist auf die index.jsp im Verzeichnis src/main/webapp
+        return "jsp/index"; // Hier wird die JSP-Datei index.jsp aufgerufen
     }
 
     @GetMapping("/personen-form")
     public String personForm() {
-        // Verweist auf eine mögliche JSP-Seite für Personenformular
-        return "personForm";
+        return "add-person"; // Verwende die JSP-Datei add-person.jsp
     }
 
     @GetMapping("/objekte-form")
     public String objektForm() {
-        // Verweist auf eine mögliche JSP-Seite für Objekteformular
-        return "objektForm";
+        return "addObjekt"; // Verwende die JSP-Datei addObjekt.jsp
     }
 
     @GetMapping("/reservierungen-form")
     public String reservierungForm() {
-        // Verweist auf eine mögliche JSP-Seite für Reservierungenformular
-        return "reservierungForm";
+        return "addReservierung"; // Verwende die JSP-Datei addReservierung.jsp
     }
+    
+    @GetMapping("/test")
+    public String testPage() {
+        return "test";  // Dies würde auf WEB-INF/jsp/test.jsp zeigen
+    }
+
 }

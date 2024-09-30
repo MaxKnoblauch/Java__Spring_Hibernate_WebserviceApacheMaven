@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"de.dhbwheidenheim.informatik.springhibernate.persondemo","de.dhbwheidenheim.informatik.springhibernate.oneToManyDemo"})
+@ComponentScan(basePackages = {"de.dhbwheidenheim.informatik.springhibernate.persondemo"})
 
 public class SpringhibernateApplication { 
 

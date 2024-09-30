@@ -5,24 +5,24 @@
 </head>
 <body>
 <h1>Willkommen zur Reservierungsverwaltung</h1>
-    <ul>
-        <li><a href="addPerson.jsp">Neue Person hinzufügen</a></li>
-        <li><a href="addObjekt.jsp">Neues Objekt hinzufügen</a></li>
-        <li><a href="addReservierung.jsp">Neue Reservierung hinzufügen</a></li>
-        <li><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></li>
-        <li><a href="${pageContext.request.contextPath}/objektdemo/allObjekte">Liste aller Objekte anzeigen</a></li>
-        <li><a href="${pageContext.request.contextPath}/reservierungdemo/allReservierungen">Liste aller Reservierungen anzeigen</a></li>
-    </ul>
+<ul>
+    <li><a href="addPerson.jsp">Neue Person hinzufügen</a></li>
+    <li><a href="addObjekt.jsp">Neues Objekt hinzufügen</a></li>
+    <li><a href="addReservierung.jsp">Neue Reservierung hinzufügen</a></li>
+    <li><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></li>
+    <li><a href="${pageContext.request.contextPath}/objektdemo/allObjekte">Liste aller Objekte anzeigen</a></li>
+    <li><a href="${pageContext.request.contextPath}/reservierungdemo/allReservierungen">Liste aller Reservierungen anzeigen</a></li>
+</ul>
 
 <h2>Personenverwaltung</h2>
 <!-- Formular zur Erfassung einer neuen Person -->
 <form action="/personen" method="post">
     <label for="vorname">Vorname:</label><br>
-    <input type="text" id="vorname" name="vorname"><br>
+    <input type="text" id="vorname" name="vorname" required><br>
     <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="name" required><br>
     <label for="age">Alter:</label><br>
-    <input type="number" id="age" name="age"><br><br>
+    <input type="number" id="age" name="age" required><br><br>
     <input type="submit" value="Person hinzufügen">
 </form>
 
@@ -33,7 +33,7 @@
 <!-- Formular zur Erfassung eines neuen Objekts -->
 <form action="/objekte" method="post">
     <label for="objektName">Objektname:</label><br>
-    <input type="text" id="objektName" name="name"><br><br>
+    <input type="text" id="objektName" name="name" required><br><br>
     <input type="submit" value="Objekt hinzufügen">
 </form>
 
@@ -44,11 +44,11 @@
 <!-- Formular zur Erfassung einer neuen Reservierung -->
 <form action="/reservierungen" method="post">
     <label for="personId">Person ID:</label><br>
-    <input type="number" id="personId" name="personId"><br>
+    <input type="number" id="personId" name="personId" required><br>
     <label for="objektId">Objekt ID:</label><br>
-    <input type="number" id="objektId" name="objektId"><br>
+    <input type="number" id="objektId" name="objektId" required><br>
     <label for="details">Details:</label><br>
-    <input type="text" id="details" name="details"><br><br>
+    <input type="text" id="details" name="details" required><br><br>
     <input type="submit" value="Reservierung hinzufügen">
 </form>
 
