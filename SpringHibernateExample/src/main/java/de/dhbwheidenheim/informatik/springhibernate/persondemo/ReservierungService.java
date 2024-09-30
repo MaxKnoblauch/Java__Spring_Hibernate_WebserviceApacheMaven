@@ -1,9 +1,9 @@
 package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +17,18 @@ public class ReservierungService {
 
     @Autowired
     private ObjektRepository objektRepository;
+    
+    public boolean istZeitraumFrei(Objekt objekt, LocalDateTime startDatum, LocalDateTime endDatum) {
+        List<Reservierung> bestehendeReservierungen = reservierungRepository.findByObjekt(objekt);
+
+        for (Reservierung reservierung : bestehendeReservierungen) {
+            // Überprüfung auf Zeitkonflikt
+            if ((startDatum.isBefore(reservierung.getEndDatum()) && endDatum.isAfter(reservierung.getStartDatum()))) {
+                return false;  // Zeitkonflikt besteht
+            }
+        }
+        return true;  // Kein Zeitkonflikt
+    }
 
     // Liste aller Reservierungen
     public List<Reservierung> getAllReservierungen() {

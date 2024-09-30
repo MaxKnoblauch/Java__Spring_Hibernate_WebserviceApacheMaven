@@ -62,7 +62,7 @@ public class PersonController {
         Optional<Person> personOptional = personService.getPersonById(personId);
         if (personOptional.isPresent()) {
             Person person = personOptional.get();
-            Reservierung reservierung = new Reservierung(reservierungDetails, person);
+            Reservierung reservierung = new Reservierung(reservierungDetails, person, null);
             reservierungRepository.save(reservierung);
             return "Reservierung erfolgreich hinzugefügt!";
         } else {
