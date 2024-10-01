@@ -21,29 +21,39 @@ public class PersonController {
 
     @Autowired
     private ReservierungRepository reservierungRepository;
+    
+    
 
     // Neue Person hinzufügen über ein Formular
-    @PostMapping(path = "/addPerson")
-    public String addPerson(@RequestParam String name, 
-                            @RequestParam String vorname, 
-                            @RequestParam int age, 
-                            RedirectAttributes redirectAttributes) {
-        try {
-            Person p = new Person(name, vorname, age);
-            personService.addPerson(p);
-            redirectAttributes.addFlashAttribute("message", "Person erfolgreich hinzugefügt!");
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
+   
+        
+        @GetMapping(path = "/addPerson")
+        public @ResponseBody String addPerson(@RequestParam String name, @RequestParam String vorname, @RequestParam int age) {
+            try {
+                Person p = new Person(name, vorname, age);
+                personService.addPerson(p);
+                return "Person erfolgreich hinzugefügt!";
+            } catch (Exception e) {
+                return "Fehler: " + e.getMessage();
+            }
         }
-        return "redirect:/"; // Leitet zur Startseite zurück
-    }
+    
 
+
+    
+    
 
     // Alle Personen anzeigen
     @GetMapping(path = "/allPersons")
     public @ResponseBody Iterable<Person> getAllPersons() {
         return personService.getAllPersons();
     }
+    
+    
+    
+    
+    
+    /*
 
     // Eine Person mit allen ihren Reservierungen anzeigen
     @GetMapping(path = "/personWithReservations")
@@ -83,4 +93,6 @@ public class PersonController {
         model.put("anzahl", personService.countPersons());
         return "list-persons"; // Rückgabe zur JSP-Seite
     }
+    
+    */
 }

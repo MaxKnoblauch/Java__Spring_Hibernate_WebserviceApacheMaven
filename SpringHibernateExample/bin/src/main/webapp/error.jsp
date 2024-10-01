@@ -6,10 +6,10 @@
 <meta charset="ISO-8859-1">
 <title>Error</title>
 </head>
-<body>
+<body> 
 <h2>Fehler!</h2>
 ${errorMessage}
 
-Zurück zur <a href="list-persons">Personenliste</a>
+Zurück zur <a href="${pageContext.request.contextPath}/">Startseite</a>
 </body>
 </html>

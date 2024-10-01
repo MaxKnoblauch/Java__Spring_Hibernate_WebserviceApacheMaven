@@ -2,6 +2,7 @@ package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -18,8 +19,17 @@ public class ObjektController {
     }
 
     @PostMapping
-    public void addObjekt(@RequestBody Objekt objekt) {
-        objektService.addObjekt(objekt);
+    public String addObjekt(@RequestParam String name, RedirectAttributes redirectAttributes) {
+        try {
+            Objekt objekt = new Objekt(name); // Sicherstellen, dass der Konstruktor in der Objekt-Klasse existiert
+            objektService.addObjekt(objekt);
+            redirectAttributes.addFlashAttribute("message", "Objekt erfolgreich hinzugefügt!");
+            return "Objekt erfolgreich hinzugefügt!"; // Leitet zurück zur Startseite
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
+            return "redirect:/"; // Leitet zurück zur Startseite
+        }
     }
+
 }
 
