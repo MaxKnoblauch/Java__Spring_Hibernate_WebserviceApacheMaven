@@ -6,10 +6,9 @@
 <body>
 <h1>Willkommen zur Reservierungsverwaltung</h1>
 
-
 <h2>Personenverwaltung</h2>
 <!-- Formular zur Erfassung einer neuen Person -->
-<form action="/personen" method="post">
+<form action="/persondemo/addPerson" method="post">
     <label for="vorname">Vorname:</label><br>
     <input type="text" id="vorname" name="vorname" required><br>
     <label for="name">Name:</label><br>
@@ -18,6 +17,7 @@
     <input type="number" id="age" name="age" required><br><br>
     <input type="submit" value="Person hinzufügen">
 </form>
+
 
 <!-- Link zur Auflistung aller Personen -->
 <h3><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></h3>

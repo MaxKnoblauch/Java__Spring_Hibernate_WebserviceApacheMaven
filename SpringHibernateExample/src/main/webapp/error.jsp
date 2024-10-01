@@ -10,6 +10,7 @@
 <h2>Fehler!</h2>
 ${errorMessage}
 
-Zurück zur <a href="list-persons">Personenliste</a>
+<!-- Link zur Startseite -->
+Zurück zur <a href="/">Startseite</a>
 </body>
 </html>
