@@ -27,16 +27,22 @@ public class PersonController {
     // Neue Person hinzufügen über ein Formular
    
         
-        @GetMapping(path = "/addPerson")
-        public @ResponseBody String addPerson(@RequestParam String name, @RequestParam String vorname, @RequestParam int age) {
-            try {
-                Person p = new Person(name, vorname, age);
-                personService.addPerson(p);
-                return "Person erfolgreich hinzugefügt!";
-            } catch (Exception e) {
-                return "Fehler: " + e.getMessage();
-            }
+    @PostMapping(path = "/persondemo/addPerson")
+    public String addPerson(@RequestParam String name, 
+                            @RequestParam String vorname, 
+                            @RequestParam int age, 
+                            RedirectAttributes redirectAttributes) {
+        try {
+            Person p = new Person(name, vorname, age);
+            personService.addPerson(p);
+            redirectAttributes.addFlashAttribute("message", "Person erfolgreich hinzugefügt!");
+            return "redirect:/"; // Zurück zur Startseite
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
+            return "redirect:/error"; // Weiterleitung zur Fehlerseite
         }
+    }
+
     
 
 

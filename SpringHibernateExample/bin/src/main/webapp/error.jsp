@@ -7,9 +7,9 @@
 <title>Error</title>
 </head>
 <body> 
-<h2>Fehler!</h2>
+<h2>Fehler!!</h2>
 ${errorMessage}
 
-Zurück zur <a href="${pageContext.request.contextPath}/">Startseite</a>
+<a href="${pageContext.request.contextPath}/">Startseite</a>
 </body>
 </html>

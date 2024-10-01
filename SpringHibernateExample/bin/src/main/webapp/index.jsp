@@ -13,15 +13,19 @@
 <!-- Formular zur Erfassung einer neuen Person -->
 
 
-<form action="${pageContext.request.contextPath}/persondemo/addPerson" method="get">
+<form action="${pageContext.request.contextPath}/persondemo/addPerson" method="post">
     <label for="vorname">Vorname:</label><br>
     <input type="text" id="vorname" name="vorname" required><br> <!-- Name ist vorname -->
+
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" required><br> <!-- Name ist name -->
+
     <label for="age">Alter:</label><br>
     <input type="number" id="age" name="age" required><br><br> <!-- Name ist age -->
+
     <input type="submit" value="Person hinzufügen">
 </form>
+
 
 
 
@@ -61,11 +65,13 @@
     <label for="objektId">Objekt ID:</label><br>
     <input type="number" id="objektId" name="objektId" required><br>
     <label for="details">Details:</label><br>
-    <input type="text" id="details" name="details" required><br><br>
+    <input type="text" id="details" name="details" required><br>
+    <label for="startDatum">Startdatum:</label><br>
+    <input type="datetime-local" id="startDatum" name="startDatum" required><br>
+    <label for="endDatum">Enddatum:</label><br>
+    <input type="datetime-local" id="endDatum" name="endDatum" required><br><br>
     <input type="submit" value="Reservierung hinzufügen">
 </form>
-
-
 
 
 <!-- Link zur Auflistung aller Reservierungen -->
