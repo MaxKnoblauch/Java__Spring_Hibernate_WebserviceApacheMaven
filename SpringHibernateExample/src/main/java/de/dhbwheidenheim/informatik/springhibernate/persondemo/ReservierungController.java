@@ -23,54 +23,53 @@ public class ReservierungController {
     @Autowired
     private ObjektRepository objektRepository;
 
-    // Hinzufügen einer Reservierung mit Zeitkonflikt-Prüfung
     @PostMapping(path = "/reservierungen")
     public String addReservierung(@RequestParam String details,
-                                   @RequestParam int personId,
-                                   @RequestParam int objektId,
-                                   @RequestParam String startDatum,
-                                   @RequestParam String endDatum,
-                                   RedirectAttributes redirectAttributes) {
+                                  @RequestParam int personId,
+                                  @RequestParam int objektId,
+                                  @RequestParam String startDatum,
+                                  @RequestParam String endDatum,
+                                  RedirectAttributes redirectAttributes) {
         try {
-            // Datumseingaben in LocalDateTime konvertieren
+            // Konvertierung der Datumseingaben in LocalDateTime
             LocalDateTime start = LocalDateTime.parse(startDatum);
             LocalDateTime end = LocalDateTime.parse(endDatum);
 
-            // Prüfung, ob die Person existiert
+            // Person suchen
             Optional<Person> personOptional = personRepository.findById(personId);
             if (!personOptional.isPresent()) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Person nicht gefunden!");
-                return "redirect:/"; // Leitet zur Startseite
+                return "redirect:/";
             }
             Person person = personOptional.get();
 
-            // Prüfung, ob das Objekt existiert
+            // Objekt suchen
             Optional<Objekt> objektOptional = objektRepository.findById(objektId);
             if (!objektOptional.isPresent()) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Objekt nicht gefunden!");
-                return "redirect:/"; // Leitet zur Startseite
+                return "redirect:/";
             }
             Objekt objekt = objektOptional.get();
 
-            // Zeitkonflikt-Prüfung
-            boolean konfliktBesteht = reservierungRepository.existsByObjektAndZeitraum(objekt, start, end);
+            // Zeitkonflikt prüfen
+            boolean konfliktBesteht = reservierungRepository.existsByObjektAndStartDatumLessThanEqualAndEndDatumGreaterThanEqual(
+                objekt, end, start);
             if (konfliktBesteht) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert!");
-                return "redirect:/"; // Leitet zur Startseite
+                return "redirect:/";
             }
 
-            // Wenn kein Konflikt besteht, wird die Reservierung hinzugefügt
+            // Reservierung speichern, wenn kein Konflikt besteht
             Reservierung reservierung = new Reservierung(details, start, end, person, objekt);
             reservierungRepository.save(reservierung);
-            redirectAttributes.addFlashAttribute("message", "Reservierung erfolgreich hinzugefügt!"); // Bestätigungsnachricht
-            return "redirect:/"; // Leitet zur Startseite
+            redirectAttributes.addFlashAttribute("message", "Reservierung erfolgreich hinzugefügt!");
+            return "redirect:/";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
-            return "redirect:/"; // Leitet zur Startseite
+            return "redirect:/";
         }
     }
-
 
     // Rückgabe aller Reservierungen
     @GetMapping(path = "/reservierungen")
@@ -78,4 +77,6 @@ public class ReservierungController {
         return reservierungRepository.findAll();
     }
 }
+
+
 

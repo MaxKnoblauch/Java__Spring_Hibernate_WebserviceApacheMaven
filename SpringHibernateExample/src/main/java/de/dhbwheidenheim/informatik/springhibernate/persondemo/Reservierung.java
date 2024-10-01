@@ -7,30 +7,24 @@ import java.time.LocalDateTime;
 public class Reservierung {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String details;
-    private LocalDateTime startDatum;
-    private LocalDateTime endDatum;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
     private Person person;
 
     @ManyToOne
-    @JoinColumn(name = "objekt_id")
     private Objekt objekt;
 
-    public Reservierung() {}
+    private LocalDateTime startDatum;
+    private LocalDateTime endDatum;
+    private String details;
 
-    // Der fehlende Konstruktor
-    public Reservierung(String details, Person person, Objekt objekt) {
-        this.details = details;
-        this.person = person;
-        this.objekt = objekt;
+    // Standard-Konstruktor
+    public Reservierung() {
     }
 
-    // Anderer Konstruktor mit Zeitangaben
+    // Konstruktor mit Parametern
     public Reservierung(String details, LocalDateTime startDatum, LocalDateTime endDatum, Person person, Objekt objekt) {
         this.details = details;
         this.startDatum = startDatum;
@@ -40,37 +34,8 @@ public class Reservierung {
     }
 
     // Getter und Setter
-
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public LocalDateTime getStartDatum() {
-        return startDatum;
-    }
-
-    public void setStartDatum(LocalDateTime startDatum) {
-        this.startDatum = startDatum;
-    }
-
-    public LocalDateTime getEndDatum() {
-        return endDatum;
-    }
-
-    public void setEndDatum(LocalDateTime endDatum) {
-        this.endDatum = endDatum;
     }
 
     public Person getPerson() {
@@ -89,9 +54,28 @@ public class Reservierung {
         this.objekt = objekt;
     }
 
-	public Object getReservierungDetails() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public LocalDateTime getStartDatum() {
+        return startDatum;
+    }
+
+    public void setStartDatum(LocalDateTime startDatum) {
+        this.startDatum = startDatum;
+    }
+
+    public LocalDateTime getEndDatum() {
+        return endDatum;
+    }
+
+    public void setEndDatum(LocalDateTime endDatum) {
+        this.endDatum = endDatum;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 }
 

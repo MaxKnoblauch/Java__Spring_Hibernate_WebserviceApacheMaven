@@ -1,24 +1,15 @@
 package de.dhbwheidenheim.informatik.springhibernate.persondemo;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import java.util.List;
 import java.time.LocalDateTime;
+import java.util.List;
 
-public interface ReservierungRepository extends JpaRepository<Reservierung, Integer> {
-	
-	 List<Reservierung> findByObjekt(Objekt objekt);
+public interface ReservierungRepository extends JpaRepository<Reservierung, Long> {
 
-    // Prüfen, ob eine Reservierung für das gleiche Objekt im gleichen Zeitraum existiert
-    @Query("SELECT CASE WHEN COUNT(r) > 0 THEN true ELSE false END " +
-           "FROM Reservierung r " +
-           "WHERE r.objekt = :objekt " +
-           "AND ((r.startDatum < :endDatum AND r.endDatum > :startDatum))")
-    boolean existsByObjektAndZeitraum(@Param("objekt") Objekt objekt,
-                                      @Param("startDatum") LocalDateTime startDatum,
-                                      @Param("endDatum") LocalDateTime endDatum);
+    // Prüfen, ob eine Reservierung für ein Objekt in einem bestimmten Zeitraum existiert
+    boolean existsByObjektAndStartDatumLessThanEqualAndEndDatumGreaterThanEqual(
+        Objekt objekt, LocalDateTime endDatum, LocalDateTime startDatum);
+
+    // Alle Reservierungen für ein bestimmtes Objekt abrufen
+    List<Reservierung> findByObjekt(Objekt objekt);
 }
-
-
 
