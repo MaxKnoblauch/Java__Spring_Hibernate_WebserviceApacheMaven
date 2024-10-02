@@ -22,13 +22,5 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    // Person nach ID finden
-    public Optional<Person> getPersonById(int id) {
-        return personRepository.findById(id);
-    }
-
-    // Anzahl der Personen zählen
-    public long countPersons() {
-        return personRepository.count();
-    }
+   
 }

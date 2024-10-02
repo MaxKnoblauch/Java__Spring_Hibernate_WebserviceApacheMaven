@@ -2,6 +2,7 @@ package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+    
+    @Autowired
+    private PersonRepository personRepository;
 
     @PostMapping(path = "/addPerson")
     public String addPerson(
@@ -81,13 +85,9 @@ public class PersonController {
         }
     }
 
+     */
     // HTML-Seite mit einer Liste aller Personen und deren Anzahl anzeigen
-    @GetMapping(value = "/listPersons")
-    public String listPersons(ModelMap model) {
-        model.put("persons", personService.getAllPersons());
-        model.put("anzahl", personService.countPersons());
-        return "list-persons"; // Rückgabe zur JSP-Seite
-    }
+  
     
-    */
+    
 }

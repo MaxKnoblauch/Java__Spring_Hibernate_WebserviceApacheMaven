@@ -41,11 +41,5 @@ public class Objekt {
         this.name = name;
     }
 
-    public List<Reservierung> getReservierungen() {
-        return reservierungen;
-    }
-
-    public void setReservierungen(List<Reservierung> reservierungen) {
-        this.reservierungen = reservierungen;
-    }
+   
 }

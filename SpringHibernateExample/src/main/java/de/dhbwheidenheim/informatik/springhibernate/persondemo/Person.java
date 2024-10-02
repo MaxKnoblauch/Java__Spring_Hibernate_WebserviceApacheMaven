@@ -2,6 +2,7 @@ package de.dhbwheidenheim.informatik.springhibernate.persondemo;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class Person {
     private String vorname;
     private int age;
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
     private List<Reservierung> reservierungen;
 
     public Person() {}
@@ -61,13 +62,7 @@ public class Person {
         this.age = age;
     }
 
-    public List<Reservierung> getReservierungen() {
-        return reservierungen;
-    }
-
-    public void setReservierungen(List<Reservierung> reservierungen) {
-        this.reservierungen = reservierungen;
-    }
+    
 }
 
 
