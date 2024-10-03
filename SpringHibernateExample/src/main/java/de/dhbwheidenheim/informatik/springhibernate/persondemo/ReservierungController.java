@@ -4,14 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/reservierungen")
 public class ReservierungController {
 
     @Autowired
@@ -23,7 +26,7 @@ public class ReservierungController {
     @Autowired
     private ObjektRepository objektRepository;
 
-    @PostMapping(path = "/reservierungen")
+    @PostMapping
     public String addReservierung(@RequestParam String details,
                                   @RequestParam int personId,
                                   @RequestParam int objektId,
@@ -56,18 +59,18 @@ public class ReservierungController {
                 objekt, end, start);
             if (konfliktBesteht) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert!");
-                return "redirect:/";
+                return "Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert!";
             }
 
             // Reservierung speichern, wenn kein Konflikt besteht
             Reservierung reservierung = new Reservierung(details, start, end, person, objekt);
             reservierungRepository.save(reservierung);
             redirectAttributes.addFlashAttribute("message", "Reservierung erfolgreich hinzugefügt!");
-            return "redirect:/";
+            return "Reservierung erfolgreich hinzugefügt!";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
-            return "redirect:/";
+            return "Ein Fehler ist aufgetreten";
         }
     }
 
