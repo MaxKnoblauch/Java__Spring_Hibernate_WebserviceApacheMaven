@@ -78,7 +78,7 @@
 			<plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>
-    <version>3.1.0</version> <!-- Ändere die Version -->
+    <version>3.1.0</version><!--$NO-MVN-MAN-VER$--> <!-- Ändere die Version -->
     <configuration>
         <encoding>UTF-8</encoding>
     </configuration>

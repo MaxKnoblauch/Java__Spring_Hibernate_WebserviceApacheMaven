@@ -20,7 +20,7 @@ die Tabellen und Testdaten für Person, Objekt und Reservierung bei der Ausführ
 Die Datei pom.xml führt alle notwendigen Libraries auf, 
 die automatisch installiert werden.
 
-Starten Sie die Klasse SpringhibernateApplication, dann sollten 
+Nachdem das Projekt via Git(smart Import) importiert wurde, starten Sie die Klasse SpringhibernateApplication, dann sollten 
 die in den Kommentaren der Klassen Person-, Objekt- und ReservierungController angegebenen 
 URLs funktionieren.
 
