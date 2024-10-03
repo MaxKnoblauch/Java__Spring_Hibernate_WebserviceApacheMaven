@@ -8,7 +8,7 @@
 
 <h2>Personenverwaltung</h2>
 <!-- Formular zur Erfassung einer neuen Person -->
-<form action="/persondemo/addPerson" method="post">
+<form action="/personen" method="post">
     <label for="vorname">Vorname:</label><br>
     <input type="text" id="vorname" name="vorname" required><br>
     <label for="name">Name:</label><br>
@@ -20,7 +20,7 @@
 
 
 <!-- Link zur Auflistung aller Personen -->
-<h3><a href="${pageContext.request.contextPath}/persondemo/allPersons">Liste aller Personen anzeigen</a></h3>
+<h3><a href="${pageContext.request.contextPath}/personen">Liste aller Personen anzeigen</a></h3>
 
 <h2>Objekte verwalten</h2>
 <!-- Formular zur Erfassung eines neuen Objekts -->

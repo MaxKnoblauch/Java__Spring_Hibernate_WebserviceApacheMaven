@@ -27,7 +27,7 @@ public class ObjektController {
             return "Objekt erfolgreich hinzugefügt!"; // Leitet zurück zur Startseite
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
-            return "redirect:/"; // Leitet zurück zur Startseite
+            return "Objekt konnte nicht hinzugefügt werden!"; // Leitet zurück zur Startseite
         }
     }
 

@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
-@RequestMapping(path = "/persondemo") // Der URL-Pfad für Person-Demo-Controller
+@RestController
+@RequestMapping("/personen") // Der URL-Pfad für Person-Demo-Controller
 public class PersonController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
-    @PostMapping(path = "/addPerson")
+    @PostMapping
     public String addPerson(
         @RequestParam("name") String name, 
         @RequestParam("vorname") String vorname, 
@@ -31,10 +32,10 @@ public class PersonController {
             Person p = new Person(name, vorname, age);
             personService.addPerson(p);
             redirectAttributes.addFlashAttribute("message", "Person erfolgreich hinzugefügt!");
-            return "redirect:/"; // Redirect to a list page or confirmation page
+            return "Person erfolgreich hinzugefügt!"; // Redirect to a list page or confirmation page
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Fehler: " + e.getMessage());
-            return "redirect:/"; // Redirect back to the form on error
+            return "Person konnte nicht hinzugefügt werden!"; // Redirect back to the form on error
         }
     }
 
@@ -43,7 +44,7 @@ public class PersonController {
     
 
     // Alle Personen anzeigen
-    @GetMapping(path = "/allPersons")
+    @GetMapping
     public @ResponseBody Iterable<Person> getAllPersons() {
         return personService.getAllPersons();
     }
