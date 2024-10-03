@@ -26,25 +26,25 @@ CREATE TABLE IF NOT EXISTS `reservierung` (
 
 -- Überprüfen, ob bereits Daten in der person-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `person` (`age`, `name`, `vorname`)
-SELECT 25, 'Petra', 'Test' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Petra' AND `vorname` = 'Test');
+SELECT 25, 'Petra', 'Maier' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Petra' AND `vorname` = 'Maier');
 
 INSERT INTO `person` (`age`, `name`, `vorname`)
-SELECT 43, 'Monster', 'Tester' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Monster' AND `vorname` = 'Tester');
+SELECT 43, 'Helmut', 'Baum' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Helmut' AND `vorname` = 'Baum');
 
 -- Überprüfen, ob bereits Daten in der objekt-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `objekt` (`name`)
-SELECT 'Haus' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Haus');
+SELECT 'Buch' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Buch');
 
 INSERT INTO `objekt` (`name`)
-SELECT 'Autor' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Autor');
+SELECT 'Auto' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Auto');
 
 INSERT INTO `objekt` (`name`)
 SELECT 'Fahrrad' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Fahrrad');
 
 -- Überprüfen, ob bereits Daten in der reservierung-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `reservierung` (`details`, `end_datum`, `start_datum`, `objekt_id`, `person_id`)
-SELECT 'Hausausleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 100, 100
-WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'Hausausleihen' AND `person_id` = 100 AND `objekt_id` = 100);
+SELECT 'BuchAusleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 100, 100
+WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'BuchAusleihen' AND `person_id` = 100 AND `objekt_id` = 100);
 
 
 
