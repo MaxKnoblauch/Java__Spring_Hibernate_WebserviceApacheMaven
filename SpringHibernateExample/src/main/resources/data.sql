@@ -4,13 +4,13 @@ CREATE TABLE IF NOT EXISTS `person` (
     `age` INT,
     `name` VARCHAR(255),
     `vorname` VARCHAR(255)
-) AUTO_INCREMENT = 100;
+) AUTO_INCREMENT = 1;
 
 -- Tabelle objekt erstellen, wenn sie noch nicht existiert
 CREATE TABLE IF NOT EXISTS `objekt` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255)
-) AUTO_INCREMENT = 100;
+) AUTO_INCREMENT = 1;
 
 -- Tabelle reservierung erstellen, wenn sie noch nicht existiert
 CREATE TABLE IF NOT EXISTS `reservierung` (
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `reservierung` (
     `person_id` INT,
     FOREIGN KEY (`objekt_id`) REFERENCES `objekt`(`id`),
     FOREIGN KEY (`person_id`) REFERENCES `person`(`id`)
-) AUTO_INCREMENT = 100;
+) AUTO_INCREMENT = 1;
 
 -- Überprüfen, ob bereits Daten in der person-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `person` (`age`, `name`, `vorname`)
@@ -43,8 +43,8 @@ SELECT 'Fahrrad' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Fahrra
 
 -- Überprüfen, ob bereits Daten in der reservierung-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `reservierung` (`details`, `end_datum`, `start_datum`, `objekt_id`, `person_id`)
-SELECT 'BuchAusleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 100, 100
-WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'BuchAusleihen' AND `person_id` = 100 AND `objekt_id` = 100);
+SELECT 'BuchAusleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 1, 1
+WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'BuchAusleihen' AND `person_id` = 1 AND `objekt_id` = 1);
 
 
 

@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Objekt {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
