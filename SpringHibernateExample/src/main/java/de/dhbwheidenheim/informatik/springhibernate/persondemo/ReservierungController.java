@@ -42,7 +42,7 @@ public class ReservierungController {
             Optional<Person> personOptional = personRepository.findById(personId);
             if (!personOptional.isPresent()) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Person nicht gefunden!");
-                return "redirect:/";
+                return "<p>Person nicht gefunden! <a href='/'>Zurück zur Startseite</a></p>";
             }
             Person person = personOptional.get();
 
@@ -50,7 +50,7 @@ public class ReservierungController {
             Optional<Objekt> objektOptional = objektRepository.findById(objektId);
             if (!objektOptional.isPresent()) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Objekt nicht gefunden!");
-                return "redirect:/";
+                return "<p>Objekt nicht gefunden! <a href='/'>Zurück zur Startseite</a></p>";
             }
             Objekt objekt = objektOptional.get();
 
@@ -59,18 +59,18 @@ public class ReservierungController {
                 objekt, end, start);
             if (konfliktBesteht) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert!");
-                return "Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert!";
+                return "<p>Zeitkonflikt: Das Objekt ist in diesem Zeitraum bereits reserviert! <a href='/'>Zurück zur Startseite</a></p>";
             }
 
             // Reservierung speichern, wenn kein Konflikt besteht
             Reservierung reservierung = new Reservierung(details, start, end, person, objekt);
             reservierungRepository.save(reservierung);
             redirectAttributes.addFlashAttribute("message", "Reservierung erfolgreich hinzugefügt!");
-            return "Reservierung erfolgreich hinzugefügt!";
+            return "<p>Reservierung erfolgreich hinzugefügt! <a href='/'>Zurück zur Startseite</a></p>";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
-            return "Ein Fehler ist aufgetreten";
+            return "<p>Ein Fehler ist aufgetreten: " + e.getMessage() + " <a href='/'>Zurück zur Startseite</a></p>";
         }
     }
 

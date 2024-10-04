@@ -24,12 +24,17 @@ public class ObjektController {
             Objekt objekt = new Objekt(name); // Sicherstellen, dass der Konstruktor in der Objekt-Klasse existiert
             objektService.addObjekt(objekt);
             redirectAttributes.addFlashAttribute("message", "Objekt erfolgreich hinzugefügt!");
-            return "Objekt erfolgreich hinzugefügt! "; // Leitet zurück zur Startseite
+
+            // Rückgabe mit Link zur Startseite
+            return "<p>Objekt erfolgreich hinzugefügt! <a href='/'>Zurück zur Startseite</a></p>";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Fehler: " + e.getMessage());
-            return "Objekt konnte nicht hinzugefügt werden!"; // Leitet zurück zur Startseite
+
+            // Rückgabe mit Link zur Startseite
+            return "<p>Objekt konnte nicht hinzugefügt werden! <a href='/'>Zurück zur Startseite</a></p>";
         }
     }
+
 
 }
 

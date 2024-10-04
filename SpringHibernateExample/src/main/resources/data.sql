@@ -31,6 +31,10 @@ SELECT 25, 'Petra', 'Maier' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name
 INSERT INTO `person` (`age`, `name`, `vorname`)
 SELECT 43, 'Helmut', 'Baum' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Helmut' AND `vorname` = 'Baum');
 
+INSERT INTO `person` (`age`, `name`, `vorname`)
+SELECT 33, 'Moni', 'Mueller' WHERE NOT EXISTS (SELECT 1 FROM `person` WHERE `name` = 'Moni' AND `vorname` = 'Mueller');
+
+
 -- Überprüfen, ob bereits Daten in der objekt-Tabelle existieren und nur hinzufügen, wenn sie nicht existieren
 INSERT INTO `objekt` (`name`)
 SELECT 'Buch' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Buch');
@@ -45,6 +49,10 @@ SELECT 'Fahrrad' WHERE NOT EXISTS (SELECT 1 FROM `objekt` WHERE `name` = 'Fahrra
 INSERT INTO `reservierung` (`details`, `end_datum`, `start_datum`, `objekt_id`, `person_id`)
 SELECT 'BuchAusleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 1, 1
 WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'BuchAusleihen' AND `person_id` = 1 AND `objekt_id` = 1);
+
+INSERT INTO `reservierung` (`details`, `end_datum`, `start_datum`, `objekt_id`, `person_id`)
+SELECT 'AutoAusleihen', '2004-07-18 20:00:00', '2004-07-18 18:00:00', 2, 2
+WHERE NOT EXISTS (SELECT 1 FROM `reservierung` WHERE `details` = 'AutoAusleihen' AND `person_id` = 2 AND `objekt_id` = 2);
 
 
 

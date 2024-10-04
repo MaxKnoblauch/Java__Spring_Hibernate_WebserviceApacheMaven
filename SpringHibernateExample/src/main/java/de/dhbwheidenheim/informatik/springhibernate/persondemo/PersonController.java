@@ -27,12 +27,17 @@ public class PersonController {
             Person p = new Person(name, vorname, age);
             personService.addPerson(p);
             redirectAttributes.addFlashAttribute("message", "Person erfolgreich hinzugefügt!");
-            return "Person erfolgreich hinzugefügt!"; // Redirect to a list page or confirmation page
+
+            // Rückgabe mit Link zur Startseite
+            return "<p>Person erfolgreich hinzugefügt! <a href='/'>Zurück zur Startseite</a></p>";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Fehler: " + e.getMessage());
-            return "Person konnte nicht hinzugefügt werden!"; // Redirect back to the form on error
+
+            // Rückgabe mit Link zur Startseite
+            return "<p>Person konnte nicht hinzugefügt werden! <a href='/'>Zurück zur Startseite</a></p>";
         }
     }
+
 
 
     
